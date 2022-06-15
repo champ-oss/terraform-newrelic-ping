@@ -9,3 +9,11 @@ module "test2" {
   name   = "terraform-test-google.com"
   uri    = "https://www.google.com"
 }
+
+module "email" {
+  source           = "../../"
+  name             = "terraform-test-email"
+  uri              = "https://www.example.com"
+  enable_email     = true
+  email_recipients = "test@example.com"
+}
