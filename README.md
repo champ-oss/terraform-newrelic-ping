@@ -17,7 +17,8 @@ A Terraform module for creating a New Relic Synthetic monitor
 See the `examples/` folder
 
 ## Features
-
+- Creates a synthetic monitor in New Relic for a URL
+- Supports email and slack alerts (using `enable_alerts = true`)
 
 
 ## Contributing
