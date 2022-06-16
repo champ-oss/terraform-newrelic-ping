@@ -11,9 +11,8 @@ module "test2" {
 }
 
 module "alerting" {
-  source           = "../../"
-  name             = "terraform-test-email"
-  uri              = "https://www.example.com"
-  enable_alerts    = true
-  email_recipients = "test@example.com"
+  source        = "../../"
+  name          = "terraform-test-email"
+  uri           = "https://www.example.com"
+  enable_alerts = true
 }
