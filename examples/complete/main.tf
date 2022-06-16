@@ -10,10 +10,10 @@ module "test2" {
   uri    = "https://www.google.com"
 }
 
-module "email" {
+module "alerting" {
   source           = "../../"
   name             = "terraform-test-email"
   uri              = "https://www.example.com"
-  enable_email     = true
+  enable_alerts    = true
   email_recipients = "test@example.com"
 }
