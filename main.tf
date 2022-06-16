@@ -19,7 +19,7 @@ resource "newrelic_synthetics_monitor" "this" {
 }
 
 resource "newrelic_synthetics_alert_condition" "this" {
-  count       = var.enable_email || var.enable_slack ? 1 : 0
+  count       = var.enable_alerts ? 1 : 0
   policy_id   = newrelic_alert_policy.this[0].id
   name        = var.name
   monitor_id  = newrelic_synthetics_monitor.this.id
@@ -27,17 +27,17 @@ resource "newrelic_synthetics_alert_condition" "this" {
 }
 
 resource "newrelic_alert_policy" "this" {
-  count               = var.enable_email || var.enable_slack ? 1 : 0
+  count               = var.enable_alerts ? 1 : 0
   name                = var.name
   incident_preference = var.incident_preference
   channel_ids = [
-    var.enable_email ? newrelic_alert_channel.email[0].id : null,
-    var.enable_slack ? newrelic_alert_channel.slack[0].id : null
+    newrelic_alert_channel.email[0].id,
+    newrelic_alert_channel.slack[0].id
   ]
 }
 
 resource "newrelic_alert_channel" "email" {
-  count = var.enable_email ? 1 : 0
+  count = var.enable_alerts ? 1 : 0
   name  = "${var.name}-email"
   type  = "email"
 
@@ -48,7 +48,7 @@ resource "newrelic_alert_channel" "email" {
 }
 
 resource "newrelic_alert_channel" "slack" {
-  count = var.enable_slack ? 1 : 0
+  count = var.enable_alerts ? 1 : 0
   name  = "${var.name}-slack"
   type  = "slack"
 

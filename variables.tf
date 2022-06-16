@@ -66,7 +66,7 @@ variable "incident_preference" {
   default     = "PER_POLICY"
 }
 
-variable "enable_email" {
+variable "enable_alerts" {
   description = "https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_channel#email"
   type        = bool
   default     = false
@@ -80,12 +80,6 @@ variable "email_recipients" {
 
 variable "email_include_json_attachment" {
   description = "https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_channel#include_json_attachment"
-  type        = bool
-  default     = false
-}
-
-variable "enable_slack" {
-  description = "https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_channel#slack"
   type        = bool
   default     = false
 }
