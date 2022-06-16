@@ -31,8 +31,8 @@ resource "newrelic_alert_policy" "this" {
   name                = var.name
   incident_preference = var.incident_preference
   channel_ids = [
-    newrelic_alert_channel.email[0].id,
-    newrelic_alert_channel.slack[0].id
+    var.enable_email ? newrelic_alert_channel.email[0].id : null,
+    var.enable_slack ? newrelic_alert_channel.slack[0].id : null
   ]
 }
 
