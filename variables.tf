@@ -75,7 +75,7 @@ variable "enable_alerts" {
 variable "email_recipients" {
   description = "https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_channel#recipients"
   type        = string
-  default     = ""
+  default     = ","
 }
 
 variable "email_include_json_attachment" {
