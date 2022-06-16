@@ -93,5 +93,5 @@ variable "slack_channel" {
 variable "slack_url" {
   description = "https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_channel#url"
   type        = string
-  default     = ""
+  default     = "https://hooks.slack.com/services/XXXXXXX/XXXXXXX/XXXXXXXXXX"
 }
