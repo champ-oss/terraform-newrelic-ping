@@ -72,6 +72,12 @@ variable "enable_alerts" {
   default     = false
 }
 
+variable "enable_synthetic_monitor" {
+  description = "enable or disable resource for synthetic monitor"
+  type        = bool
+  default     = true
+}
+
 variable "email_recipients" {
   description = "https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_channel#recipients"
   type        = string
