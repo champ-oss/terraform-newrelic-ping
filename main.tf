@@ -7,6 +7,7 @@ terraform {
 }
 
 resource "newrelic_synthetics_monitor" "this" {
+  count             = var.enable_synthetic_monitor ? 1 : 0
   name              = var.name
   type              = "SIMPLE"
   frequency         = var.frequency
@@ -22,7 +23,7 @@ resource "newrelic_synthetics_alert_condition" "this" {
   count       = var.enable_alerts ? 1 : 0
   policy_id   = newrelic_alert_policy.this[0].id
   name        = var.name
-  monitor_id  = newrelic_synthetics_monitor.this.id
+  monitor_id  = newrelic_synthetics_monitor.this[0].id
   runbook_url = var.runbook_url
 }
 
