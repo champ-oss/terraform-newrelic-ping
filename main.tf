@@ -23,7 +23,7 @@ resource "newrelic_synthetics_alert_condition" "this" {
   count       = var.enable_alerts ? 1 : 0
   policy_id   = newrelic_alert_policy.this[0].id
   name        = var.name
-  monitor_id  = newrelic_synthetics_monitor.this[0].id
+  monitor_id  = newrelic_synthetics_monitor.this.id
   runbook_url = var.runbook_url
 }
 
