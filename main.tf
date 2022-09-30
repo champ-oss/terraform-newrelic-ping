@@ -1,11 +1,3 @@
-terraform {
-  required_providers {
-    newrelic = {
-      source = "newrelic/newrelic"
-    }
-  }
-}
-
 resource "newrelic_synthetics_monitor" "this" {
   count             = var.enable_synthetic_monitor ? 1 : 0
   name              = var.name
