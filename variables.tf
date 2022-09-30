@@ -18,11 +18,11 @@ variable "locations_public" {
   description = "List of location names to monitor from"
   type        = list(string)
   default = [
-    "AWS_US_EAST_1",
-    "AWS_US_EAST_2",
-    "AWS_US_WEST_1",
-    "AWS_US_WEST_2",
-    "AWS_CA_CENTRAL_1"
+    "US_EAST_1",
+    "US_EAST_2",
+    "US_WEST_1",
+    "US_WEST_2",
+    "CA_CENTRAL_1"
   ]
 }
 
