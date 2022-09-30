@@ -52,7 +52,7 @@ No modules.
 | <a name="input_enable_alerts"></a> [enable\_alerts](#input\_enable\_alerts) | https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_channel#email | `bool` | `false` | no |
 | <a name="input_enable_synthetic_monitor"></a> [enable\_synthetic\_monitor](#input\_enable\_synthetic\_monitor) | enable or disable resource for synthetic monitor | `bool` | `true` | no |
 | <a name="input_incident_preference"></a> [incident\_preference](#input\_incident\_preference) | https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_policy#incident_preference | `string` | `"PER_POLICY"` | no |
-| <a name="input_locations_public"></a> [locations\_public](#input\_locations\_public) | List of location names to monitor from | `list(string)` | <pre>[<br>  "AWS_US_EAST_1",<br>  "AWS_US_EAST_2",<br>  "AWS_US_WEST_1",<br>  "AWS_US_WEST_2",<br>  "AWS_CA_CENTRAL_1"<br>]</pre> | no |
+| <a name="input_locations_public"></a> [locations\_public](#input\_locations\_public) | List of location names to monitor from | `list(string)` | <pre>[<br>  "US_EAST_1",<br>  "US_EAST_2",<br>  "US_WEST_1",<br>  "US_WEST_2",<br>  "CA_CENTRAL_1"<br>]</pre> | no |
 | <a name="input_name"></a> [name](#input\_name) | Name of the monitor | `string` | n/a | yes |
 | <a name="input_period"></a> [period](#input\_period) | How often the monitor should run, in minutes | `string` | `"EVERY_MINUTE"` | no |
 | <a name="input_runbook_url"></a> [runbook\_url](#input\_runbook\_url) | https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/synthetics_alert_condition#runbook_url | `string` | `""` | no |
