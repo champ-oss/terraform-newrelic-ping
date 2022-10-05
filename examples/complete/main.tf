@@ -9,10 +9,3 @@ module "test2" {
   name   = "terraform-test-google.com"
   uri    = "https://www.google.com"
 }
-
-module "alerting" {
-  source        = "../../"
-  name          = "terraform-test-email"
-  uri           = "https://www.example.com"
-  enable_alerts = true
-}
