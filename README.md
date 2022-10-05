@@ -19,13 +19,15 @@ See the `examples/` folder
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_newrelic"></a> [newrelic](#requirement\_newrelic) | 2.49.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_newrelic"></a> [newrelic](#provider\_newrelic) | n/a |
+| <a name="provider_newrelic"></a> [newrelic](#provider\_newrelic) | 2.49.1 |
 
 ## Modules
 
@@ -35,11 +37,11 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [newrelic_alert_channel.email](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_channel) | resource |
-| [newrelic_alert_channel.slack](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_channel) | resource |
-| [newrelic_alert_policy.this](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/alert_policy) | resource |
-| [newrelic_synthetics_alert_condition.this](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/synthetics_alert_condition) | resource |
-| [newrelic_synthetics_monitor.this](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/synthetics_monitor) | resource |
+| [newrelic_alert_channel.email](https://registry.terraform.io/providers/newrelic/newrelic/2.49.1/docs/resources/alert_channel) | resource |
+| [newrelic_alert_channel.slack](https://registry.terraform.io/providers/newrelic/newrelic/2.49.1/docs/resources/alert_channel) | resource |
+| [newrelic_alert_policy.this](https://registry.terraform.io/providers/newrelic/newrelic/2.49.1/docs/resources/alert_policy) | resource |
+| [newrelic_synthetics_alert_condition.this](https://registry.terraform.io/providers/newrelic/newrelic/2.49.1/docs/resources/synthetics_alert_condition) | resource |
+| [newrelic_synthetics_monitor.this](https://registry.terraform.io/providers/newrelic/newrelic/2.49.1/docs/resources/synthetics_monitor) | resource |
 
 ## Inputs
 
