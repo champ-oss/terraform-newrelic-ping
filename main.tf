@@ -9,3 +9,10 @@ resource "newrelic_synthetics_monitor" "this" {
   validation_string = var.validation_string
   verify_ssl        = var.verify_ssl
 }
+
+resource "time_sleep" "this" {
+  count           = var.enable_synthetic_monitor ? 1 : 0
+  depends_on      = [newrelic_synthetics_monitor.this]
+  create_duration = "10s"
+}
+
