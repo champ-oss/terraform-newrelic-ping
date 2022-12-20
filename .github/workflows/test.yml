@@ -42,3 +42,4 @@ jobs:
         run: terraform plan -detailed-exitcode
       - name: destroy
         run: terraform destroy -auto-approve
+        if: always()
