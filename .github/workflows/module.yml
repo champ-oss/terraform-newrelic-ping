@@ -38,7 +38,7 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
@@ -58,14 +58,14 @@ jobs:
       matrix:
         testcase: ${{fromJSON(needs.list-tests.outputs.matrix)}}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           aws-region: ${{ env.AWS_DEFAULT_REGION }}
-      - uses: hashicorp/setup-terraform@v1.3.2 # https://github.com/hashicorp/setup-terraform/releases
+      - uses: hashicorp/setup-terraform@v2.0.3 # https://github.com/hashicorp/setup-terraform/releases
         with:
-          terraform_version: 1.1.4 # https://github.com/hashicorp/terraform/releases
+          terraform_version: 1.3.5 # https://github.com/hashicorp/terraform/releases
           terraform_wrapper: false
 
       - uses: actions/setup-go@v2
@@ -109,3 +109,24 @@ jobs:
             echo "tests failed"
             exit 1
           fi
+
+  github-issue-notification:
+    needs: [ module ]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: set-env-info
+        run: |
+          echo "GIT_REPO=$(echo ${GITHUB_REPOSITORY} | sed -e 's|.*/||')" >> $GITHUB_ENV
+          echo "GITHUB_WORKFLOW_NAME=$(echo ${GITHUB_WORKFLOW} | sed -e 's|.*/||')" >> $GITHUB_ENV
+          echo "GITHUB_REF_NAME=$(echo ${GITHUB_REF_NAME})" >> $GITHUB_ENV
+      - name: github-issue-notification
+        uses: champ-oss/action-github-issue-notification@v1.0.0-421559f
+        with:
+          GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
+          GITHUB_ORG: champ-oss
+          GITHUB_REPO: ${{ env.GIT_REPO }}
+          GITHUB_CUSTOM_LABEL: ${{ env.GITHUB_WORKFLOW_NAME }}
+          GITHUB_BRANCH_LABEL: ${{ env.GITHUB_REF_NAME }}
