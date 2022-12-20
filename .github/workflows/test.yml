@@ -32,7 +32,6 @@ jobs:
           aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
       - run: terraform init
       - run: terraform validate
-      - run: terraform import newrelic_synthetics_monitor.this[0] d8acadf6-afbc-4878-8d11-189876d41375
       - run: terraform plan -out=tfplan
       - run: terraform apply -auto-approve tfplan
       - run: terraform plan -detailed-exitcode
