@@ -1,6 +1,6 @@
 variable "name" {
   description = "Name of the monitor"
-  default     = "google.com"
+  default     = "test"
   type        = string
 }
 
