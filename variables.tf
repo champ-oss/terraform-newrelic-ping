@@ -1,10 +1,12 @@
 variable "name" {
   description = "Name of the monitor"
+  default     = "google.com"
   type        = string
 }
 
 variable "uri" {
   description = "URI to monitor"
+  default     = "https://www.google.com"
   type        = string
 }
 
