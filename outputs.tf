@@ -1,4 +1,4 @@
 output "id" {
   description = "Monitor ID"
-  value       = join("", newrelic_synthetics_monitor.this[*].id)
+  value       = try(newrelic_synthetics_monitor.this[0].id, "")
 }

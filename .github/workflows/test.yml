@@ -1,0 +1,40 @@
+name: test
+
+on:
+  workflow_dispatch:
+  push:
+  schedule:
+    - cron: "0 7 * * *"
+
+env:
+  TF_INPUT: false
+  TF_IN_AUTOMATION: true
+  AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+  NEW_RELIC_API_KEY: ${{ secrets.NEW_RELIC_API_KEY }}
+  NEW_RELIC_REGION: ${{ secrets.NEW_RELIC_REGION }}
+  NEW_RELIC_ACCOUNT_ID: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
+
+jobs:
+  module:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+      - uses: hashicorp/setup-terraform@v2.0.3 # https://github.com/hashicorp/setup-terraform/releases
+        with:
+          terraform_version: 1.3.5 # https://github.com/hashicorp/terraform/releases
+          terraform_wrapper: false
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+      - run: terraform init
+      - run: terraform validate
+      - run: terraform import newrelic_synthetics_monitor.this[0] d8acadf6-afbc-4878-8d11-189876d41375
+      - run: terraform plan -out=tfplan
+      - run: terraform apply -auto-approve tfplan
+      - run: terraform plan -detailed-exitcode
+      - run: terraform destroy -auto-approve
+        if: always()
