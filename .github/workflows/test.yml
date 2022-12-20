@@ -34,6 +34,10 @@ jobs:
       - run: terraform validate
       - run: terraform plan -out=tfplan
       - run: terraform apply -auto-approve tfplan
+      - run: cat terraform.tfstate
+        if: always()
       - run: terraform plan -detailed-exitcode
+      - run: cat terraform.tfstate
+        if: always()
       - run: terraform destroy -auto-approve
         if: always()
