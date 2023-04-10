@@ -8,7 +8,7 @@ resource "newrelic_synthetics_monitor" "this" {
   uri               = var.uri
   validation_string = var.validation_string
   verify_ssl        = var.verify_ssl
-  
+
   dynamic "custom_header" {
     for_each = var.custom_headers
     content {
