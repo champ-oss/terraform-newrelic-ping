@@ -55,3 +55,9 @@ variable "enable_synthetic_monitor" {
   type        = bool
   default     = true
 }
+
+variable "custom_headers" {
+  description = "Custom headers to use in monitor job"
+  type        = map(string)
+  default     = {}
+}
