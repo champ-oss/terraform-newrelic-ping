@@ -12,8 +12,8 @@ resource "newrelic_synthetics_monitor" "this" {
   dynamic "custom_header" {
     for_each = var.custom_headers
     content {
-      name  = custom_headers.key
-      value = custom_headers.value
+      name  = custom_header.key
+      value = custom_header.value
     }
   }
 }
