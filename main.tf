@@ -17,10 +17,3 @@ resource "newrelic_synthetics_monitor" "this" {
     }
   }
 }
-
-resource "time_sleep" "this" {
-  count           = var.enable_synthetic_monitor ? 1 : 0
-  depends_on      = [newrelic_synthetics_monitor.this]
-  create_duration = "10s"
-}
-
